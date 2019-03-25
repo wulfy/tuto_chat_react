@@ -19,6 +19,11 @@
   color: white;
 }
 
+.message {
+  width: 100%;
+  display: block;
+}
+
 .App-link {
   color: #61dafb;
 }
