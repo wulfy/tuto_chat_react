@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Message from './components/messageComponent'
+import Chat from './components/chatComponent';
+import Status from './components/connexionStatusComponent';
 
 class App extends Component {
 
@@ -17,9 +18,9 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            CHAT
+            CHAT <Status/>
           </p>
-          <Message/>
+          <Chat/>
         </header>
       </div>
     );

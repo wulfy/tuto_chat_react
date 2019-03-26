@@ -1,11 +1,15 @@
-import { MESSAGE_RECEIVE, SEND_MESSAGE} from '../actions/messageActions';
+import { MESSAGE_RECEIVE, CONNECTED, FAIL_CONNECTED, TYPE_USER_LIST} from '../actions/chatActions';
 
 const initialState = {
   messages:[],
-  errorMessages:[]
+  errorMessages:[],
+  usersList: [],
+  connected: null
 };
 
 export default function messagesReducer(state = initialState, action) {
+
+  let connected = null;
   switch (action.type) {
 
     case MESSAGE_RECEIVE: {
@@ -22,7 +26,17 @@ export default function messagesReducer(state = initialState, action) {
       return {...state, messages, errorMessages};
     }
 
-    case SEND_MESSAGE:
+    case CONNECTED:
+        connected = true;
+        return {...state, connected };
+
+    case FAIL_CONNECTED:
+        connected = false;
+        return {...state, connected };
+
+    case TYPE_USER_LIST:
+        const {usersList} = action.payload; 
+        return {...state, usersList };
     default:
       return state;
   }

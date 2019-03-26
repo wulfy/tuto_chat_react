@@ -2,8 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { sendMessage } from '../actions/messageActions';
-
+import { sendMessage, chatConnect } from '../actions/chatActions';
+import UserList from './userListComponent';
 const messageComponent = props => {
 
 	const onSendMessage = (e) => {
@@ -13,18 +13,31 @@ const messageComponent = props => {
 		actions.sendMessage(e.target.message.value);
 	}
 
-	const { messages } = props;
-	console.log(messages);
+	const handleConnect = (e) => {
+		const { actions, login } = props;
+		e.preventDefault();
+
+		actions.chatConnect(login.login);
+	}
+
+	const { chat, login } = props;
+	console.log(chat);
 	return(
 
 		<div>
-		<form id="message-form" onSubmit={onSendMessage}>
-	        <button type="submit" > send message </button> 
-	        <input id="message" name="message" type="text" />
-	     </form>
+		{login.login}
+		<UserList/>
+		{chat.connected ? 
+							<form id="message-form" onSubmit={onSendMessage}>
+						        <input id="message" name="message" type="text" />
+						        <button type="submit" > send message </button> 
+						     </form>
+						:    
+							<button onClick={handleConnect}> Se connecter </button>
+		}
 
 	     <div>
-	     	{messages.messages.map((message,index)=> (
+	     	{chat.messages.map((message,index)=> (
 		     		<span key={"msg-"+index} className="message"> 
 		     			{message} 
 		     		</span>
@@ -37,7 +50,8 @@ const messageComponent = props => {
 }
 
 messageComponent.propTypes = {
-  messages: PropTypes.array.isRequired,
+  chat: PropTypes.object.isRequired,
+  login: PropTypes.object.isRequired,
   actions: PropTypes.shape({
     sendMessage: PropTypes.func,
   }).isRequired,
@@ -46,7 +60,8 @@ messageComponent.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages,
+    chat: state.chat,
+    login: state.login,
   };
 }
 
@@ -55,6 +70,7 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(
       {
         sendMessage,
+        chatConnect,
       },
       dispatch,
     ),
