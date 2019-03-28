@@ -25,24 +25,24 @@ const messageComponent = props => {
 	return(
 
 		<div>
-		{login.login}
 		<UserList/>
+		<div id="chat">
+	     	{chat.messages.map((message,index)=> (
+		     		<p key={"msg-"+index} className={"message " + (message.user == login.login ? 'blue':'')}> 
+		     			{message.user} > {message.text} 
+		     		</p>
+		     ))}
+		</div>
+		<hr/>
+				{login.login}
 		{chat.connected ? 
 							<form id="message-form" onSubmit={onSendMessage}>
 						        <input id="message" name="message" type="text" />
 						        <button type="submit" > send message </button> 
 						     </form>
 						:    
-							<button onClick={handleConnect}> Se connecter </button>
+							<button onClick={handleConnect}> Se connecter au chat </button>
 		}
-
-	     <div>
-	     	{chat.messages.map((message,index)=> (
-		     		<span key={"msg-"+index} className="message"> 
-		     			{message} 
-		     		</span>
-		     ))}
-		</div>
 
 		</div>
 

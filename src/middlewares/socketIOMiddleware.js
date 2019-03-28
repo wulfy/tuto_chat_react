@@ -40,8 +40,8 @@ const socketIO = store => next => action => {
 
 			socket.on(TYPE_MESSAGE,(data) => {
 				console.log("receiving");
-				const { message } = data;
-				return next(messageReceive(message));
+				console.log(data);
+				return next(messageReceive(data));
 			});
 
 			socket.on(TYPE_USER_LIST,(data) => {

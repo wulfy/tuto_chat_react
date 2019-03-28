@@ -8,8 +8,8 @@ const userListComponent = props => {
 	console.log(chat);
 	return(
 
-		<ul>
-			{chat.usersList.map((user,index)=> <li>{user}</li>)}
+		<ul id="userList">
+			{chat.usersList.map((user,index)=> <li id="{index}">{user}</li>)}
 		</ul>
 
 		)

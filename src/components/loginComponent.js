@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
+import logo from '../logo.svg';
 import { logUser } from '../actions/loginActions';
 
 const loginComponent = props => {
@@ -21,10 +22,12 @@ const loginComponent = props => {
 	}
 	return(
 			<div>
+			<img src={logo} className="App-logo" alt="logo" />
+			<br/>
+			Bienvenue, veuillez vous connecter avec un nom d'utilisateur
 				<form id="login-form" onSubmit={onLogin}>
-			        <label>Your Name : </label>
 			        <input id="name" name="name" type="text"/>
-			        <button type="submit" > login </button> 
+			        <button type="submit" > Utiliser ce nom </button> 
 			     </form>
 			</div>
 		)

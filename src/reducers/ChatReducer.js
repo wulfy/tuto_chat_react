@@ -18,10 +18,16 @@ export default function messagesReducer(state = initialState, action) {
       let errorMessages = state.errorMessages;
 
       if('message' in action.payload)
-        messages.push(action.payload.message);
+      {
+        const {message, userName} = action.payload;
+        messages.push({text:message,user:userName});
+      }
 
       if('errorMessage' in action.payload)
-        errorMessages.push(action.payload.errorMessage);
+      {
+        const {errorMessage} = action.payload;
+        errorMessages.push(errorMessage);
+      }
 
       return {...state, messages, errorMessages};
     }

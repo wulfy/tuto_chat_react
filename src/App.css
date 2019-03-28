@@ -22,6 +22,8 @@
 .message {
   width: 100%;
   display: block;
+  margin: 0px;
+  text-align: left;
 }
 
 .App-link {
@@ -36,8 +38,42 @@
   display: inline-block;
 }
 
+#chat {
+width: 100vw;
+height: 70vh;
+background-color: white;
+color: black;
+display: flex;
+align-content: flex-end;
+flex-wrap: wrap;
+}
+
+#userList{
+  position: absolute;
+  top:40px;
+  right: 50px;
+list-style-image: url('https://www.shareicon.net/data/16x16/2016/09/07/827235_man_512x512.png');
+}
+
+#status {
+  position: absolute;
+  top:10px;
+  right: 50px;
+}
+
+button {
+  display: block;
+  margin-top : 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .green{
   background-color: green;
+}
+
+.blue{
+  color: blue;
 }
 
 .red{

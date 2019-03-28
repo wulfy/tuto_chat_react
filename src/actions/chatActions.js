@@ -9,7 +9,7 @@ export const TYPE_USER_LIST = "TYPE_USER_LIST";
 export function messageReceive(message,errorMessage) {
   return {
     type: MESSAGE_RECEIVE,
-    payload: {message,errorMessage}
+    payload: {...message,errorMessage}
   }
 }
 

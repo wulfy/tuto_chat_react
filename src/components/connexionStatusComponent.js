@@ -12,9 +12,9 @@ const connexionStatusComponent = props => {
 	console.log(chat.connected);
 	return(
 
-		<span className={style}>
-
-		</span>
+		<div id="status">
+			connexion <span className={style}/>
+		</div>
 
 		)
 }

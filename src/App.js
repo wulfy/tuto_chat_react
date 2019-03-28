@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Chat from './components/chatComponent';
 import Status from './components/connexionStatusComponent';
@@ -15,13 +14,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            CHAT <Status/>
-          </p>
+        <Status/>
           <Chat/>
-        </header>
       </div>
     );
   }
