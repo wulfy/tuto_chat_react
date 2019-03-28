@@ -23,7 +23,7 @@ export default function messagesReducer(state = initialState, action) {
         messages.push({text:message,user:userName});
       }
 
-      if('errorMessage' in action.payload)
+      if('errorMessage' in action.payload && action.payload.errorMessage)
       {
         const {errorMessage} = action.payload;
         errorMessages.push(errorMessage);
